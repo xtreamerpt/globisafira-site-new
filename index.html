@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Globisafira – Transportes, Lda.">
 <meta property="og:description" content="Road freight from Portugal to Germany, Poland, Czechia, Austria and Slovakia.">
-<meta property="og:image" content="assets/img/base-amora.jpg">
+<meta property="og:image" content="assets/img/base-palmela.jpg">
 <meta name="description" content="Road freight from Portugal to Germany, Poland, Czechia, Austria and Slovakia. Modern Euro 6 fleet, own drivers.">
 
 <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -21,6 +21,7 @@
 <script src="assets/js/gsap.min.js" defer></script>
 <script src="assets/js/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/geo.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
 
 <style>
   /* ---------------------------------------------------------------
@@ -51,6 +52,14 @@
   .nav-link::after{content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--teal-bright); transform:scaleX(0); transform-origin:left; transition:transform .3s}
   .nav-link:hover,.nav-link[aria-current="true"]{color:#fff}
   .nav-link[aria-current="true"]::after,.nav-link:hover::after{transform:scaleX(1)}
+
+  /* Language picker */
+  .lang-pick{position:relative; display:inline-flex; align-items:center; gap:.4rem; color:rgba(255,255,255,.85); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:.35rem .7rem; transition:border-color .2s, background .2s}
+  .lang-pick:hover,.lang-pick:focus-within{border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.06)}
+  .lang-select{appearance:none; -webkit-appearance:none; background:transparent; border:0; color:#fff; font:inherit; font-size:.88rem; font-weight:600; padding-right:1rem; max-width:9.5rem; cursor:pointer; outline:none;
+    background-image:linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position:calc(100% - 6px) 55%, calc(100% - 2px) 55%; background-size:4px 4px; background-repeat:no-repeat}
+  .lang-select option{color:#0C1E28; background:#fff}
+  @media (max-width:420px){ .lang-select{max-width:6.5rem} }
 
   /* Buttons */
   .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.95rem 1.45rem; border-radius:999px; font-weight:650; transition:transform .15s, background .2s, color .2s, box-shadow .3s}
@@ -171,24 +180,24 @@
 </svg>
     </a>
     <ul class="hidden md:flex items-center gap-8 text-[.95rem]" id="navLinks">
-      <li><a class="nav-link" href="#home">Home</a></li>
-      <li><a class="nav-link" href="#services">Services</a></li>
-      <li><a class="nav-link" href="#fleet">Fleet</a></li>
-      <li><a class="nav-link" href="#routes">Routes</a></li>
-      <li><a class="nav-link" href="#contact">Contact</a></li>
+      <li><a class="nav-link" href="#home" data-i18n="n_home">Home</a></li>
+      <li><a class="nav-link" href="#services" data-i18n="n_services">Services</a></li>
+      <li><a class="nav-link" href="#fleet" data-i18n="n_fleet">Fleet</a></li>
+      <li><a class="nav-link" href="#routes" data-i18n="n_routes">Routes</a></li>
+      <li><a class="nav-link" href="#contact" data-i18n="n_contact">Contact</a></li>
     </ul>
-    <div class="hidden md:block"><a href="#contact" class="btn btn-primary !py-2.5 !px-4 text-sm">Request a quote</a></div>
-    <button id="menuBtn" class="md:hidden text-white p-2 -mr-2" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+    <div class="flex items-center gap-2 md:gap-4 ml-auto md:ml-0"><label class="lang-pick" title="Language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span class="sr-only" data-i18n="lang">Language</span><select class="lang-select" aria-label="Language" data-i18n-aria="lang"><option value="en">English</option></select></label><div class="hidden md:block"><a href="#contact" class="btn btn-primary !py-2.5 !px-4 text-sm" data-i18n="cta">Request a quote</a></div></div>
+    <button id="menuBtn" class="md:hidden text-white p-2 -mr-2" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu" data-i18n-aria="menu">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </nav>
   <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
     <ul class="px-5 py-3 flex flex-col text-lg text-white">
-      <li><a class="block py-3" href="#home">Home</a></li>
-      <li><a class="block py-3" href="#services">Services</a></li>
-      <li><a class="block py-3" href="#fleet">Fleet</a></li>
-      <li><a class="block py-3" href="#routes">Routes</a></li>
-      <li><a class="block py-3" href="#contact">Contact</a></li>
+      <li><a class="block py-3" href="#home" data-i18n="n_home">Home</a></li>
+      <li><a class="block py-3" href="#services" data-i18n="n_services">Services</a></li>
+      <li><a class="block py-3" href="#fleet" data-i18n="n_fleet">Fleet</a></li>
+      <li><a class="block py-3" href="#routes" data-i18n="n_routes">Routes</a></li>
+      <li><a class="block py-3" href="#contact" data-i18n="n_contact">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -198,7 +207,7 @@
      HERO
      Intro: particles assemble into the logo globe, the wordmark
      appears, then the globe unfolds into a 3D dot map of Europe
-     and the routes from Seixal light up.
+     and the routes from Palmela light up.
      ========================================================= -->
 <section id="home" aria-label="Introduction">
   <div id="hero">
@@ -209,11 +218,11 @@
 
     <div class="relative z-10 h-full max-w-7xl mx-auto px-5 lg:px-8 flex flex-col justify-start md:justify-center pt-28 md:pt-16 pointer-events-none">
       <div class="hero-copy max-w-[40rem]">
-        <p class="text-white/70 mb-5 text-[1.05rem]">Road freight from Portugal</p>
-        <h1 class="display text-[2.7rem] sm:text-6xl lg:text-[5rem]">Portugal to Central Europe, on&nbsp;schedule.</h1>
-        <p class="mt-6 text-lg text-white/75 max-w-[44ch] leading-relaxed">Full and part loads to Germany, Poland, Czechia, Austria and Slovakia, on our own trucks with our own drivers.</p>
+        <p class="text-white/70 mb-5 text-[1.05rem]" data-i18n="h_kicker">Road freight from Portugal</p>
+        <h1 class="display text-[2.7rem] sm:text-6xl lg:text-[5rem]" data-i18n="h_title">Portugal to Central Europe, on&nbsp;schedule.</h1>
+        <p class="mt-6 text-lg text-white/75 max-w-[44ch] leading-relaxed" data-i18n="h_lead">Full and part loads to Germany, Poland, Czechia, Austria and Slovakia, on our own trucks with our own drivers.</p>
         <div class="mt-9 flex flex-wrap gap-3 pointer-events-auto">
-          <a href="#contact" class="btn btn-primary">Request a quote</a>
+          <a href="#contact" class="btn btn-primary" data-i18n="cta">Request a quote</a>
         </div>
       </div>
     </div>
@@ -232,29 +241,29 @@
 <section id="services" class="py-24 lg:py-32">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
-      <h2 class="heading text-4xl lg:text-6xl max-w-[14ch]" data-split>Everything between pickup and delivery.</h2>
-      <p class="text-muted max-w-[40ch] leading-relaxed" data-reveal>One company handles the truck, the driver, the border paperwork and the updates along the way.</p>
+      <h2 class="heading text-4xl lg:text-6xl max-w-[14ch]" data-split data-i18n="s_title">Everything between pickup and delivery.</h2>
+      <p class="text-muted max-w-[40ch] leading-relaxed" data-reveal data-i18n="s_lead">One company handles the truck, the driver, the border paperwork and the updates along the way.</p>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" data-stagger>
       <article class="svc">
         <svg class="svc-ico" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 30V14h26v16M29 20h8l6 7v3h-14"/><circle cx="12" cy="33" r="4"/><circle cx="36" cy="33" r="4"/></svg>
-        <h3 class="heading text-2xl mt-10">European road freight</h3>
-        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors">Full truckloads and groupage, door to door across the EU.</p>
+        <h3 class="heading text-2xl mt-10" data-i18n="s1t">European road freight</h3>
+        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors" data-i18n="s1d">Full truckloads and groupage, door to door across the EU.</p>
       </article>
       <article class="svc">
         <svg class="svc-ico" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 24h40M34 14l10 10-10 10M14 8v32"/></svg>
-        <h3 class="heading text-2xl mt-10">Cross-border logistics</h3>
-        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors">Regular lines to Germany, Poland, Czechia, Austria and Slovakia, with CMR and tolls handled.</p>
+        <h3 class="heading text-2xl mt-10" data-i18n="s2t">Cross-border logistics</h3>
+        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors" data-i18n="s2d">Regular lines to Germany, Poland, Czechia, Austria and Slovakia, with CMR and tolls handled.</p>
       </article>
       <article class="svc">
         <svg class="svc-ico" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M24 12v12l8 5"/></svg>
-        <h3 class="heading text-2xl mt-10">Fleet management</h3>
-        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors">GPS-tracked trucks, planned around EU driving-time rules.</p>
+        <h3 class="heading text-2xl mt-10" data-i18n="s3t">Fleet management</h3>
+        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors" data-i18n="s3d">GPS-tracked trucks, planned around EU driving-time rules.</p>
       </article>
       <article class="svc">
         <svg class="svc-ico" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16l18-9 18 9v18l-18 9-18-9z"/><path d="M6 16l18 9 18-9M24 25v18"/></svg>
-        <h3 class="heading text-2xl mt-10">Freight logistics</h3>
-        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors">Collection planning, consolidation, storage at our Palmela yard and same-day proof of delivery.</p>
+        <h3 class="heading text-2xl mt-10" data-i18n="s4t">Freight logistics</h3>
+        <p class="svc-txt text-muted mt-3 leading-relaxed transition-colors" data-i18n="s4d">Collection planning, consolidation, storage at our Palmela yard and same-day proof of delivery.</p>
       </article>
     </div>
   </div>
@@ -266,22 +275,22 @@
 <section id="fleet" class="overflow-hidden">
   <div id="fleetPin" class="min-h-[100svh] flex flex-col justify-center py-24 lg:py-0">
     <div class="max-w-7xl w-full mx-auto px-5 lg:px-8 mb-10 flex flex-wrap items-end justify-between gap-6">
-      <h2 class="display text-5xl lg:text-7xl text-white" data-split>Modern fleet.</h2>
+      <h2 class="display text-5xl lg:text-7xl text-white" data-split data-i18n="f_title">Modern fleet.</h2>
       <ul class="flex flex-wrap gap-2 max-w-xl" data-stagger>
-        <li class="chip"><i></i>Euro 6 engines</li>
-        <li class="chip"><i></i>Well maintained</li>
-        <li class="chip"><i></i>GPS-tracked 24/7</li>
-        <li class="chip"><i></i>Curtain-side trailers</li>
+        <li class="chip"><i></i><span data-i18n="f_euro6">Euro 6 engines</span></li>
+        <li class="chip"><i></i><span data-i18n="f_maint">Well maintained</span></li>
+        <li class="chip"><i></i><span data-i18n="f_gps">GPS-tracked 24/7</span></li>
+        <li class="chip"><i></i><span data-i18n="f_curtain">Curtain-side trailers</span></li>
       </ul>
     </div>
     <div class="rail-wrap px-5 lg:px-0">
       <div class="rail lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-[10vw]" id="rail">
-        <figure class="tile t-wide"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/img/yard-poster.jpg" data-src="assets/video/yard-flyover.mp4" aria-label="Drone flyover of the fleet parked at the Palmela yard at dusk"></video><figcaption>Palmela yard</figcaption></figure>
-        <figure class="tile t-tall"><img src="assets/img/tractor-front.jpg" alt="White tractor unit with Globisafira lettering on a country road" loading="lazy"><figcaption>Long-haul tractors</figcaption></figure>
-        <figure class="tile t-wide"><img src="assets/img/tractors-yard.jpg" alt="Tractor units parked side by side at the yard" loading="lazy"><figcaption>Our tractors</figcaption></figure>
-        <figure class="tile t-tall"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/img/road-poster.jpg" data-src="assets/video/on-the-road.mp4" aria-label="Globisafira truck driving along a pine-lined road"></video><figcaption>On the road</figcaption></figure>
-        <figure class="tile t-tall"><img src="assets/img/curtainsider.jpg" alt="Truck with teal livery and grey curtain-side trailer seen from above" loading="lazy"><figcaption>Curtain-siders</figcaption></figure>
-        <figure class="tile t-wide"><img src="assets/img/yard-aerial.jpg" alt="Aerial view of trailers lined up at the yard" loading="lazy"><figcaption>Ready to load</figcaption></figure>
+        <figure class="tile t-wide"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/img/yard-poster.jpg" data-src="assets/video/yard-flyover.mp4" aria-label="Drone flyover of the fleet parked at the Palmela yard at dusk"></video><figcaption data-i18n="c_yard">Palmela yard</figcaption></figure>
+        <figure class="tile t-tall"><img src="assets/img/tractor-front.jpg" alt="White tractor unit with Globisafira lettering on a country road" loading="lazy"><figcaption data-i18n="c_tractors">Long-haul tractors</figcaption></figure>
+        <figure class="tile t-wide"><img src="assets/img/tractors-yard.jpg" alt="Tractor units parked side by side at the yard" loading="lazy"><figcaption data-i18n="c_ours">Our tractors</figcaption></figure>
+        <figure class="tile t-tall"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/img/road-poster.jpg" data-src="assets/video/on-the-road.mp4" aria-label="Globisafira truck driving along a pine-lined road"></video><figcaption data-i18n="c_road">On the road</figcaption></figure>
+        <figure class="tile t-tall"><img src="assets/img/curtainsider.jpg" alt="Truck with teal livery and grey curtain-side trailer seen from above" loading="lazy"><figcaption data-i18n="c_curtain">Curtain-siders</figcaption></figure>
+        <figure class="tile t-wide"><img src="assets/img/yard-aerial.jpg" alt="Aerial view of trailers lined up at the yard" loading="lazy"><figcaption data-i18n="c_ready">Ready to load</figcaption></figure>
       </div>
     </div>
   </div>
@@ -293,41 +302,41 @@
 <section id="routes" class="py-24 lg:py-32">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
-      <h2 class="heading text-4xl lg:text-6xl max-w-[13ch]" data-split>Where our trucks go every week.</h2>
-      <p class="text-muted max-w-[40ch] leading-relaxed" data-reveal>Every load leaves Portugal through Spain and France. Pick a destination to follow its route.</p>
+      <h2 class="heading text-4xl lg:text-6xl max-w-[13ch]" data-split data-i18n="r_title">Where our trucks go every week.</h2>
+      <p class="text-muted max-w-[40ch] leading-relaxed" data-reveal data-i18n="r_lead">Every load leaves Portugal through Spain and France. Pick a destination to follow its route.</p>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-6 items-start">
       <div class="lg:col-span-8 rounded-[24px] border border-line bg-panel overflow-hidden" data-reveal>
-        <svg id="euMap" viewBox="30 90 860 600" class="w-full h-auto block" role="img" aria-label="Map of Europe showing the road routes from Palmela to Frankfurt, Prague, Warsaw, Vienna and Bratislava">
+        <svg id="euMap" viewBox="30 90 860 600" class="w-full h-auto block" role="img" aria-label="Map of Europe showing the road routes from Palmela to Frankfurt, Praha, Warszawa, Wien and Bratislava">
           <g id="mCountries"></g><g id="mRoutes"></g><g id="mFlows"></g><g id="mCities"></g><g id="mTrucks"></g>
         </svg>
       </div>
       <div class="lg:col-span-4">
-        <div role="tablist" aria-label="Destinations" id="destTabs" class="grid gap-1" data-stagger></div>
-        <p class="text-sm text-muted mt-5 px-1">Distances and transit times are indicative and depend on the exact collection and delivery points.</p>
+        <div role="tablist" aria-label="Destinations" data-i18n-aria="r_dest" id="destTabs" class="grid gap-1" data-stagger></div>
+        <p class="text-sm text-muted mt-5 px-1" data-i18n="r_note">Distances and transit times are indicative and depend on the exact collection and delivery points.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     OUR BASE — head office, warehouse & yard in Amora
+     OUR BASE — head office, warehouse & yard in Palmela
      ========================================================= -->
 <section id="base" class="relative overflow-hidden bg-night text-white">
   <div class="relative h-[78svh] min-h-[460px] max-h-[820px]">
-    <img id="baseImg" src="assets/img/base-amora.jpg" alt="Globisafira head office and warehouse in Amora, Seixal, with a truck parked in front at dusk" class="absolute inset-0 w-full h-[118%] object-cover object-[30%_45%] lg:object-[50%_45%]" loading="lazy">
+    <img id="baseImg" src="assets/img/base-palmela.jpg" alt="Globisafira head office and warehouse in Palmela, with a truck parked in front at dusk" class="absolute inset-0 w-full h-[118%] object-cover object-[30%_45%] lg:object-[50%_45%]" loading="lazy">
     <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(7,24,35,.55) 0%, rgba(7,24,35,0) 35%, rgba(7,24,35,0) 55%, rgba(7,24,35,.9) 100%)"></div>
     <div class="absolute inset-x-0 bottom-0">
       <div class="max-w-7xl mx-auto px-5 lg:px-8 pb-12 lg:pb-16 flex flex-wrap items-end justify-between gap-6">
         <div>
-          <p class="text-white/70 mb-3" data-reveal>Our base</p>
-          <h2 class="heading text-4xl lg:text-6xl max-w-[16ch]" data-split>Office, warehouse and yard in Palmela.</h2>
+          <p class="text-white/70 mb-3" data-reveal data-i18n="b_kicker">Our base</p>
+          <h2 class="heading text-4xl lg:text-6xl max-w-[16ch]" data-split data-i18n="b_title">Office, warehouse and yard in Palmela.</h2>
         </div>
         <ul class="flex flex-wrap gap-2" data-stagger>
-          <li class="chip"><i></i>Loading dock</li>
-          <li class="chip"><i></i>Warehouse</li>
-          <li class="chip"><i></i>Truck yard</li>
+          <li class="chip"><i></i><span data-i18n="b_dock">Loading dock</span></li>
+          <li class="chip"><i></i><span data-i18n="b_wh">Warehouse</span></li>
+          <li class="chip"><i></i><span data-i18n="b_yard">Truck yard</span></li>
         </ul>
       </div>
     </div>
@@ -340,28 +349,28 @@
 <section id="contact" class="py-24 lg:py-32 bg-panel border-t border-line">
   <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12">
     <div class="lg:col-span-5">
-      <h2 class="heading text-4xl lg:text-6xl" data-split>Request a quote.</h2>
-      <p class="mt-5 text-muted leading-relaxed max-w-[42ch]" data-reveal>Tell us where the load starts and ends. We reply with a price and a pickup date within one working day.</p>
+      <h2 class="heading text-4xl lg:text-6xl" data-split data-i18n="k_title">Request a quote.</h2>
+      <p class="mt-5 text-muted leading-relaxed max-w-[42ch]" data-reveal data-i18n="k_lead">Tell us where the load starts and ends. We reply with a price and a pickup date within one working day.</p>
       <dl class="mt-10 space-y-6" data-stagger>
-        <div><dt class="font-semibold">Head office &amp; yard</dt><dd class="text-muted mt-1">Palmela<br>Portugal</dd></div>
-        <div><dt class="font-semibold">Phone</dt><dd class="mt-1"><a class="underline decoration-line underline-offset-4 hover:decoration-teal" href="tel:+351964646911">+351 964 646 911</a></dd></div>
-        <div><dt class="font-semibold">Email</dt><dd class="mt-1"><a class="underline decoration-line underline-offset-4 hover:decoration-teal" href="mailto:globisafira@gmail.com">globisafira@gmail.com</a></dd></div>
+        <div><dt class="font-semibold" data-i18n="k_hq">Head office &amp; yard</dt><dd class="text-muted mt-1">Palmela<br>Portugal</dd></div>
+        <div><dt class="font-semibold" data-i18n="phone">Phone</dt><dd class="mt-1"><a class="underline decoration-line underline-offset-4 hover:decoration-teal" href="tel:+351964646911">+351 964 646 911</a></dd></div>
+        <div><dt class="font-semibold" data-i18n="email">Email</dt><dd class="mt-1"><a class="underline decoration-line underline-offset-4 hover:decoration-teal" href="mailto:globisafira@gmail.com">globisafira@gmail.com</a></dd></div>
       </dl>
     </div>
 
     <form id="quoteForm" class="lg:col-span-7 bg-paper border border-line rounded-[24px] p-6 sm:p-8 grid sm:grid-cols-2 gap-5" novalidate data-reveal>
-      <div class="field"><label for="q-name">Name</label><input id="q-name" name="name" autocomplete="name" required><p class="err">Enter your name.</p></div>
-      <div class="field"><label for="q-company">Company</label><input id="q-company" name="company" autocomplete="organization"></div>
-      <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required><p class="err">Enter a valid email address.</p></div>
-      <div class="field"><label for="q-phone">Phone</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
-      <div class="field"><label for="q-from">Collection (city, country)</label><input id="q-from" name="from" required placeholder="e.g. Seixal, PT"><p class="err">Enter a collection point.</p></div>
-      <div class="field"><label for="q-to">Delivery (city, country)</label><input id="q-to" name="to" required placeholder="e.g. Brno, CZ"><p class="err">Enter a delivery point.</p></div>
-      <div class="field"><label for="q-type">Load type</label><select id="q-type" name="type"><option>Full truckload (FTL)</option><option>Part load / groupage</option><option>Not sure yet</option></select></div>
-      <div class="field"><label for="q-date">Ready to collect</label><input id="q-date" name="date" type="date"></div>
-      <div class="sm:col-span-2 field"><label for="q-msg">Goods and details</label><textarea id="q-msg" name="message" rows="4" placeholder="Pallets, weight, dimensions, special handling"></textarea></div>
-      <label class="check sm:col-span-2 text-sm text-muted"><input type="checkbox" name="consent"><span>I agree that Globisafira may use these details to reply to my request.</span></label>
-      <p class="text-[#C2412D] text-sm hidden sm:col-span-2" id="q-consent-err">Tick the box so we can reply to you.</p>
-      <div class="sm:col-span-2 flex flex-wrap items-center gap-4"><button class="btn btn-ink" type="submit">Send quote request</button><p class="text-sm text-muted">Opens your email app with the request filled in.</p></div>
+      <div class="field"><label for="q-name" data-i18n="name">Name</label><input id="q-name" name="name" autocomplete="name" required><p class="err" data-i18n="e_name">Enter your name.</p></div>
+      <div class="field"><label for="q-company" data-i18n="company">Company</label><input id="q-company" name="company" autocomplete="organization"></div>
+      <div class="field"><label for="q-email" data-i18n="email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required><p class="err" data-i18n="e_email">Enter a valid email address.</p></div>
+      <div class="field"><label for="q-phone" data-i18n="phone">Phone</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="q-from" data-i18n="from">Collection (city, country)</label><input id="q-from" name="from" required placeholder="e.g. Palmela, PT" data-i18n-ph="from_ph"><p class="err" data-i18n="e_from">Enter a collection point.</p></div>
+      <div class="field"><label for="q-to" data-i18n="to">Delivery (city, country)</label><input id="q-to" name="to" required placeholder="e.g. Brno, CZ" data-i18n-ph="to_ph"><p class="err" data-i18n="e_to">Enter a delivery point.</p></div>
+      <div class="field"><label for="q-type" data-i18n="type">Load type</label><select id="q-type" name="type"><option value="Full truckload (FTL)" data-i18n="ftl">Full truckload (FTL)</option><option value="Part load / groupage" data-i18n="ltl">Part load / groupage</option><option value="Not sure yet" data-i18n="unsure">Not sure yet</option></select></div>
+      <div class="field"><label for="q-date" data-i18n="date">Ready to collect</label><input id="q-date" name="date" type="date"></div>
+      <div class="sm:col-span-2 field"><label for="q-msg" data-i18n="goods">Goods and details</label><textarea id="q-msg" name="message" rows="4" placeholder="Pallets, weight, dimensions, special handling" data-i18n-ph="goods_ph"></textarea></div>
+      <label class="check sm:col-span-2 text-sm text-muted"><input type="checkbox" name="consent"><span data-i18n="consent">I agree that Globisafira may use these details to reply to my request.</span></label>
+      <p class="text-[#C2412D] text-sm hidden sm:col-span-2" id="q-consent-err" data-i18n="e_consent">Tick the box so we can reply to you.</p>
+      <div class="sm:col-span-2 flex flex-wrap items-center gap-4"><button class="btn btn-ink" type="submit" data-i18n="send">Send quote request</button><p class="text-sm text-muted" data-i18n="hint">Opens your email app with the request filled in.</p></div>
       <p class="form-ok sm:col-span-2 hidden rounded-xl bg-[#E3F5F3] text-[#0E5653] p-4" role="status"></p>
     </form>
   </div>
@@ -385,17 +394,17 @@
         <p class="mt-3 text-sm"><a class="hover:text-white" href="tel:+351964646911">+351 964 646 911</a><br><a class="hover:text-white" href="mailto:globisafira@gmail.com">globisafira@gmail.com</a></p>
       </div>
       <div>
-        <h3 class="text-white font-semibold mb-3">Company</h3>
+        <h3 class="text-white font-semibold mb-3" data-i18n="company">Company</h3>
         <ul class="space-y-2 text-sm">
-          <li><a class="hover:text-white" href="#services">Services</a></li>
-          <li><a class="hover:text-white" href="#fleet">Fleet</a></li>
-          <li><a class="hover:text-white" href="#routes">Routes</a></li>
-          <li><a class="hover:text-white" href="#base">Our base</a></li>
-          <li><a class="hover:text-white" href="#contact">Contact</a></li>
+          <li><a class="hover:text-white" href="#services" data-i18n="n_services">Services</a></li>
+          <li><a class="hover:text-white" href="#fleet" data-i18n="n_fleet">Fleet</a></li>
+          <li><a class="hover:text-white" href="#routes" data-i18n="n_routes">Routes</a></li>
+          <li><a class="hover:text-white" href="#base" data-i18n="n_base">Our base</a></li>
+          <li><a class="hover:text-white" href="#contact" data-i18n="n_contact">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="text-white font-semibold mb-3">Legal</h3>
+        <h3 class="text-white font-semibold mb-3" data-i18n="legal">Legal</h3>
         <ul class="space-y-2 text-sm">
           <li><a class="hover:text-white" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a></li>
         </ul>
@@ -413,13 +422,16 @@ document.addEventListener("DOMContentLoaded", function(){
    conic projection centred on the corridor. dots = land sample points
    [x, y, servedCountry], routes/cities in the same 1000×760 space. */
 const GEO = window.GEO;
+const t = (k, v) => I18n.t(k, v);
+I18n.init();   // detect language and translate the page before anything animates
 
 const DESTS = [
-  { id:'de', code:'de', country:'Germany',  city:'Frankfurt',  cityKey:'frankfurt',  km:'≈ 2,250 km', days:'3 days',   anchor:'l' },
-  { id:'cz', code:'cz', country:'Czechia',  city:'Prague',     cityKey:'prague',     km:'≈ 2,700 km', days:'3–4 days', anchor:'t' },
-  { id:'pl', code:'pl', country:'Poland',   city:'Warsaw',     cityKey:'warsaw',     km:'≈ 3,300 km', days:'4–5 days', anchor:'r' },
-  { id:'at', code:'at', country:'Austria',  city:'Vienna',     cityKey:'vienna',     km:'≈ 2,900 km', days:'4 days',   anchor:'t' },
-  { id:'sk', code:'sk', country:'Slovakia', city:'Bratislava', cityKey:'bratislava', km:'≈ 2,950 km', days:'4 days',   anchor:'b' },
+  // km = indicative road distance from Palmela; days = translation key for the transit time
+  { id:'de', code:'de', city:'Frankfurt',  cityKey:'frankfurt',  km:2250, days:'d3',  anchor:'l' },
+  { id:'cz', code:'cz', city:'Praha',      cityKey:'prague',     km:2700, days:'d34', anchor:'t' },
+  { id:'pl', code:'pl', city:'Warszawa',   cityKey:'warsaw',     km:3300, days:'d45', anchor:'r' },
+  { id:'at', code:'at', city:'Wien',       cityKey:'vienna',     km:2900, days:'d4',  anchor:'t' },
+  { id:'sk', code:'sk', city:'Bratislava', cityKey:'bratislava', km:2950, days:'d4',  anchor:'b' },
 ];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasGSAP = !!window.gsap;
@@ -483,7 +495,7 @@ const Hero = (function(){
   geo.setAttribute('aServed', new THREE.BufferAttribute(aServed,1));
   geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 50);
 
-  const seixal = toMap(...GEO.cities.seixal);
+  const seixal = toMap(...GEO.cities.palmela);
   const U = {
     uTime:{value:0}, uIntro:{value:0}, uMorph:{value:0}, uLogo:{value:0},
     uSpin:{value:0}, uStretch:{value:1}, uGlobeScale:{value:1},
@@ -735,16 +747,18 @@ const Hero = (function(){
   });
   // Cities
   const cityLabel = (key, txt, dx, dy, anchor='start') => { const [x,y]=GEO.cities[key]; const c=el('circle',{cx:x,cy:y,r:7,class:'city'},gCi); const t=el('text',{x:x+dx,y:y+dy,'text-anchor':anchor},gCi); t.textContent=txt; return c; };
-  const hq = cityLabel('seixal','Palmela',-12,30,'start'); hq.classList.add('on'); hq.setAttribute('r',9);
+  const hq = cityLabel('palmela','Palmela',-12,30,'start'); hq.classList.add('on'); hq.setAttribute('r',9);
   const off = { de:[-12,-14,'end'], cz:[0,-16,'middle'], pl:[0,-16,'middle'], at:[0,-16,'middle'], sk:[14,22,'start'] };
   DESTS.forEach(d => { R[d.id].city = cityLabel(d.cityKey, d.city, ...off[d.id]); });
   const truck = el('circle',{ r:8, class:'truck' }, gT);
 
-  // Destination list
+  // Destination list (re-rendered when the language changes)
   const tabs = document.getElementById('destTabs');
+  const tabHTML = d => `<span class="bar"></span><span><span class="heading text-xl block">${d.city}</span><span class="text-muted text-sm">${t(d.code)} · ≈ ${I18n.num(d.km)} km</span></span><span class="text-right"><span class="heading text-lg block">${t(d.days)}</span><span class="text-muted text-xs">${t('transit')}</span></span>`;
+  I18n.onChange(() => [...tabs.children].forEach(b => { const d = DESTS.find(x => x.id === b.dataset.id); b.innerHTML = tabHTML(d); }));
   DESTS.forEach((d,i) => {
     const b=document.createElement('button'); b.type='button'; b.className='dest'; b.setAttribute('role','tab'); b.dataset.id=d.id;
-    b.innerHTML=`<span class="bar"></span><span><span class="heading text-xl block">${d.city}</span><span class="text-muted text-sm">${d.country} · ${d.km}</span></span><span class="text-right"><span class="heading text-lg block">${d.days}</span><span class="text-muted text-xs">transit</span></span>`;
+    b.innerHTML=tabHTML(d);
     b.addEventListener('click',()=>select(d.id,true));
     b.addEventListener('mouseenter',()=>select(d.id,true));
     b.addEventListener('keydown',e=>{ if(!['ArrowDown','ArrowUp'].includes(e.key)) return; e.preventDefault(); const all=[...tabs.children]; const n=(all.indexOf(b)+(e.key==='ArrowDown'?1:-1)+all.length)%all.length; all[n].focus(); select(all[n].dataset.id,true); });
@@ -802,12 +816,14 @@ const Hero = (function(){
   if (!hasGSAP || reduceMotion) return;
   document.querySelectorAll('[data-split]').forEach(h=>{
     h.innerHTML = h.textContent.trim().split(/\s+/).map(w=>`<span class="w"><span>${w}</span></span>`).join(' ');
+    h.dataset.splitDone = '1';
     gsap.from(h.querySelectorAll('.w > span'),{ yPercent:110, duration:.9, stagger:.06, ease:'power4.out', scrollTrigger:{ trigger:h, start:'top 85%' } });
   });
   document.querySelectorAll('[data-reveal]').forEach(el=>gsap.from(el,{ y:40, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 88%' } }));
   document.querySelectorAll('[data-stagger]').forEach(g=>gsap.from(g.children,{ y:40, opacity:0, duration:.8, stagger:.08, ease:'power3.out', scrollTrigger:{ trigger:g, start:'top 88%' } }));
   gsap.fromTo('#baseImg',{ yPercent:-12 },{ yPercent:0, ease:'none', scrollTrigger:{ trigger:'#base', start:'top bottom', end:'bottom top', scrub:true } });
   window.addEventListener('load',()=>ScrollTrigger.refresh());
+  I18n.onChange(()=>requestAnimationFrame(()=>ScrollTrigger.refresh()));
 })();
 
 /* ================================================================
@@ -824,7 +840,7 @@ function submitTo(form){
   ].join('\n');
   window.location.href = `mailto:${QUOTE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const ok = form.querySelector('.form-ok');
-  ok.innerHTML = `Your email app should now open with the request ready to send. If it doesn't, email us at <a class="underline" href="mailto:${QUOTE_EMAIL}">${QUOTE_EMAIL}</a> or call <a class="underline" href="tel:+351964646911">+351 964 646 911</a>.`;
+  ok.innerHTML = t('ok', { email:`<a class="underline" href="mailto:${QUOTE_EMAIL}">${QUOTE_EMAIL}</a>`, phone:'<a class="underline" href="tel:+351964646911">+351 964 646 911</a>' });
   ok.classList.remove('hidden');
 }
 document.getElementById('quoteForm').addEventListener('submit',e=>{
