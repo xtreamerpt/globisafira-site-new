@@ -735,7 +735,7 @@ const Hero = (function(){
   });
   // Cities
   const cityLabel = (key, txt, dx, dy, anchor='start') => { const [x,y]=GEO.cities[key]; const c=el('circle',{cx:x,cy:y,r:7,class:'city'},gCi); const t=el('text',{x:x+dx,y:y+dy,'text-anchor':anchor},gCi); t.textContent=txt; return c; };
-  const hq = cityLabel('seixal','Seixal',-12,30,'start'); hq.classList.add('on'); hq.setAttribute('r',9);
+  const hq = cityLabel('seixal','Palmela',-12,30,'start'); hq.classList.add('on'); hq.setAttribute('r',9);
   const off = { de:[-12,-14,'end'], cz:[0,-16,'middle'], pl:[0,-16,'middle'], at:[0,-16,'middle'], sk:[14,22,'start'] };
   DESTS.forEach(d => { R[d.id].city = cityLabel(d.cityKey, d.city, ...off[d.id]); });
   const truck = el('circle',{ r:8, class:'truck' }, gT);
